@@ -1,3 +1,4 @@
+// Insertion at any position in a linked list
 #include <bits/stdc++.h>
 using namespace std;
 class Node {
@@ -27,6 +28,34 @@ void insertAtTail(Node* &tail, int d) {
     Node* temp = new Node(d);   // whenever a new data is inserted a new node is created
     tail -> next = temp;
     tail = tail -> next;
+}
+
+// insert at any position
+void insertAtAnyPosition(Node* &tail, Node* &head, int position, int d) {
+    // inserting at head
+    if(position == 1) {
+        insertAtHead(head, d);
+        return;
+    }
+
+    // insert at any position other than head and tail
+    Node* temp = head;
+    int cnt = 1;
+    while (cnt < position-1) {
+        temp = temp->next;
+        cnt++;
+    }
+
+    // inserting at last position
+    if (temp -> next == NULL) {
+        insertAtTail(tail, d);
+        return;
+    }
+    
+    // creating a node for d
+    Node* nodeToInsert = new Node(d);
+    nodeToInsert -> next = temp -> next;
+    temp -> next = nodeToInsert;
 }
 
 // traversing LL
@@ -63,5 +92,10 @@ int main()
     // insertAtHead(head, 15);
     // print(head);
     
+    insertAtAnyPosition(tail, head, 3, 22);
+    print(head);
+
+    cout << "Head: " << head -> data << endl;
+    cout << "Tail: " << tail -> data << endl;
     return 0;
 }

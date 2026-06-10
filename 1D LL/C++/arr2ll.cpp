@@ -14,7 +14,7 @@ class Node {
     public:
     Node(int data1) {
         data = data1;
-        next = nullptr;
+        next = NULL;
     }
 };
 Node* convertArr2LL(vector<int> &arr) {
