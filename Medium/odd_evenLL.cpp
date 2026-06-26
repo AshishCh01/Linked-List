@@ -14,7 +14,6 @@ struct ListNode {
 };
 
 
-
 ListNode* oddEvenList(ListNode* head) {
     if (head == nullptr || head->next == nullptr)
         return head;
